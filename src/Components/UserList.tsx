@@ -1,11 +1,23 @@
 import React from 'react';
 import axios from 'axios';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ShadowPropTypesIOS } from 'react-native';
 
-export default class UserList extends React.Component {
+export interface Props {
+    users?: any[];
+}
 
-    state = {
-        users: [],
+interface State {
+    users: any[];
+}
+
+export default class UserList extends React.Component<Props, State> {
+
+    constructor(props: Props) {
+        super(props);
+
+        this.state = {
+            users: props.users || []
+        }
     }
 
     componentDidMount() {
